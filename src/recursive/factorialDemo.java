@@ -27,7 +27,7 @@ public class factorialDemo {
     }
 
     public static void main(String[] args) {
-        demOne(5);
+        demOne(10);
         getFactorial(7);
 
 
