@@ -2,39 +2,44 @@ package sort;
 
 /**
  * @author:Lucas
- * @description:冒泡排序算法和各种优化
- *
- * 根本的优化都是对已经排好序的部分进行优化，就是后面的比较不比较他们了。
+ * @description:冒泡排序算法和各种优化 根本的优化都是对已经排好序的部分进行优化，就是后面的比较不比较他们了。
  * 最优解是通过比较。记录最后一次需要比较的位置的下标然后给flag，然后k=flag,k作为最新的循环边界。
  * @Date:2019/1/15
  **/
 public class BubbleSort {
 
-    /*
-    * 交换方法
-    * */
-    public static void swap(int front ,int behind){
-        int temp;
-        temp = behind;
-        behind = front;
-        front = temp;
+    public static void main(String[] args) {
+        int[] arg = {9, 8, 7, 6, 5, 3, 4};
+        int[] arg2 = {9, 8, 7, 6, 5, 3, 4};
+        int[] arg3 = {4, 3, 2, 5, 6, 7};
+        display(arg);
+        System.out.println("经典算法");
+        bubbleSort1(arg);
+        display(arg);
+        System.out.println("优化算法");
+        bubbleSort2(arg2);
+        display(arg);
+        bubbleSort3(arg3);
+        System.out.println("最优算法");
+        display(arg3);
     }
-    public static void display(int[] array){
-        for(int i = 0 ; i < array.length ; i++){
-            System.out.print(array[i]+" ");
+
+    public static void display(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
         System.out.println();
     }
 
     /*经典算法
-    * */
-    public static void  bubbleSort1 (int [] arg){
-        for (int i = 0;i< arg.length-1;i++){
-            for (int j = i+1; j< arg.length ;j++){
-                if (arg[i]>arg[j]){
-                   arg[i] = arg[i]+  arg[j];
-                   arg[j] = arg[i] - arg[j];
-                   arg[i] = arg[i] - arg[j];
+     * */
+    public static void bubbleSort1(int[] arg) {
+        for (int i = 0; i < arg.length - 1; i++) {
+            for (int j = i + 1; j < arg.length; j++) {
+                if (arg[i] > arg[j]) {
+                    arg[i] = arg[i] + arg[j];
+                    arg[j] = arg[i] - arg[j];
+                    arg[i] = arg[i] - arg[j];
                 }
             }
         }
@@ -95,20 +100,12 @@ public class BubbleSort {
         }
     }
 
-
-    public static void main (String [] args){
-        int [] arg = {9,8,7,6,5,3,4};
-        int [] arg2 = {9,8,7,6,5,3,4};
-        int [] arg3 = {4,3,2,5,6,7};
-        display(arg);
-        System.out.println("经典算法");
-        bubbleSort1(arg);
-        display(arg);
-        System.out.println("优化算法");
-        bubbleSort2(arg2);
-        display(arg);
-        bubbleSort3(arg3);
-        System.out.println("最优算法");
-        display(arg3);
+    /*
+     * 交换方法
+     * */
+    public static void swap(int[] array, int front, int behind) {
+        array[front] = array[front] + array[behind];
+        array[behind] = array[front] - array[behind];
+        array[front] = array[front] - array[behind];
     }
 }
